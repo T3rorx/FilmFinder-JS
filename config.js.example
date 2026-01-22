@@ -1,0 +1,6 @@
+// Configuration de l'API OMDb
+// Copiez ce fichier en config.js et remplacez 'VOTRE_CLE_API' par votre clé API OMDb
+// Vous pouvez obtenir une clé gratuite sur http://www.omdbapi.com/apikey.aspx
+
+const API_KEY = 'VOTRE_CLE_API';
+const API_URL = 'https://www.omdbapi.com/';

@@ -1,0 +1,69 @@
+# Dependencies (if any)
+node_modules/
+vendor/
+package-lock.json
+yarn.lock
+
+# Build artifacts
+dist/
+build/
+*.min.js
+*.min.css
+*.bundle.js
+
+# Generated files
+*.generated.*
+coverage/
+.nyc_output/
+*.lcov
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Secrets (CRITICAL - Never index these)
+config.js
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+.secrets/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Large files
+*.db
+*.sqlite
+*.dump
+*.sql.gz
+*.zip
+*.tar.gz
+
+# Test artifacts
+.nyc_output/
+coverage/
+*.test.js.snap
+
+# Cursor specific
+.cursor/
+*.cursorrules.local
+
+# Documentation (keep README but ignore large docs)
+docs/archive/
+*.md.bak

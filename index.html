@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FilmFinder - Recherche de films</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            50: '#f9fafb',
+                            100: '#f3f4f6',
+                            200: '#e5e7eb',
+                            300: '#d1d5db',
+                            400: '#9ca3af',
+                            500: '#6b7280',
+                            600: '#4b5563',
+                            700: '#374151',
+                            800: '#1f2937',
+                            900: '#111827',
+                            950: '#030712',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- CSS personnalisé -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-[#0C1120] text-[#E9EEF5] min-h-screen relative overflow-x-hidden">
+    <!-- Animated background elements -->
+    <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+        <!-- Orbes animés flottants -->
+        <div class="animated-orb orb-1"></div>
+        <div class="animated-orb orb-2"></div>
+        <div class="animated-orb orb-3"></div>
+        <div class="animated-orb orb-4"></div>
+        <div class="animated-orb orb-5"></div>
+
+        <!-- Grille animée -->
+        <div class="animated-grid"></div>
+
+        <!-- Particules flottantes -->
+        <div class="particles-container">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+
+        <!-- Formes géométriques animées -->
+        <div class="geometric-shape shape-1"></div>
+        <div class="geometric-shape shape-2"></div>
+        <div class="geometric-shape shape-3"></div>
+    </div>
+
+    <!-- Header avec glassmorphisme -->
+    <header class="relative backdrop-blur-xl bg-white/5 border-b border-white/10 shadow-2xl sticky top-0 z-40">
+        <div class="container mx-auto px-4 py-8">
+            <div class="text-center">
+                <h1 class="text-5xl font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r from-purple-300 via-pink-300 to-indigo-300 drop-shadow-lg">
+                    <i class="fas fa-film mr-3"></i>FilmFinder
+                </h1>
+                <p class="text-gray-300 text-lg">Recherchez vos films et séries préférés</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Formulaire de recherche avec glassmorphisme -->
+        <form id="searchForm" class="mb-8">
+            <div class="flex justify-center">
+                <div class="w-full max-w-2xl">
+                    <div class="backdrop-blur-2xl bg-gradient-to-br from-[#151A21]/40 to-[#0C1120]/60 border border-[#22C55E]/30 rounded-2xl p-4 shadow-2xl relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-r from-[#845EC2]/5 via-transparent to-[#40E0FF]/5"></div>
+                        <div class="relative flex gap-3">
+                            <input
+                                type="text"
+                                class="flex-1 px-6 py-4 backdrop-blur-xl bg-[#1E1E1E]/60 border border-[#40E0FF]/20 rounded-xl text-[#E9EEF5] placeholder-[#7A7A7A] focus:outline-none focus:ring-2 focus:ring-[#40E0FF]/50 focus:border-[#40E0FF]/50 transition-all shadow-lg focus:bg-[#1E1E1E]/80"
+                                id="searchInput"
+                                placeholder="Rechercher un film ou une série..."
+                                required
+                            >
+                            <button
+                                type="submit"
+                                class="px-8 py-4 backdrop-blur-xl bg-gradient-to-r from-[#40E0FF]/90 to-[#22C55E]/90 hover:from-[#40E0FF] hover:to-[#22C55E] text-[#0C1120] font-semibold rounded-xl transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#40E0FF]/50 shadow-xl border border-[#40E0FF]/30 hover:shadow-[#40E0FF]/50 hover:shadow-2xl"
+                            >
+                                <i class="fas fa-search mr-2"></i>Rechercher
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <!-- Filtres avec glassmorphisme -->
+        <div id="filtersContainer" class="hidden mb-6 flex justify-center">
+            <div class="backdrop-blur-2xl bg-gradient-to-br from-[#151A21]/40 to-[#0C1120]/60 border border-[#845EC2]/30 rounded-2xl p-4 shadow-2xl inline-flex gap-3 flex-wrap justify-center relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-r from-[#845EC2]/5 via-transparent to-[#40E0FF]/5"></div>
+                <span class="text-[#E9EEF5] font-semibold flex items-center mr-2 relative z-10">
+                    <i class="fas fa-filter mr-2 text-[#40E0FF]"></i>Filtrer :
+                </span>
+                <button
+                    class="filter-btn active px-5 py-2 backdrop-blur-xl bg-[#845EC2]/30 hover:bg-[#845EC2]/40 border border-[#845EC2]/40 rounded-xl text-[#E9EEF5] font-medium transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#845EC2]/50 shadow-lg relative z-10"
+                    data-filter="all"
+                >
+                    <i class="fas fa-th mr-2"></i>Tous
+                </button>
+                <button
+                    class="filter-btn px-5 py-2 backdrop-blur-xl bg-[#1E1E1E]/60 hover:bg-[#1E1E1E]/80 border border-[#40E0FF]/20 rounded-xl text-[#E9EEF5] font-medium transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#40E0FF]/50 shadow-lg relative z-10 hover:border-[#40E0FF]/40"
+                    data-filter="movie"
+                >
+                    <i class="fas fa-film mr-2"></i>Films
+                </button>
+                <button
+                    class="filter-btn px-5 py-2 backdrop-blur-xl bg-[#1E1E1E]/60 hover:bg-[#1E1E1E]/80 border border-[#22C55E]/20 rounded-xl text-[#E9EEF5] font-medium transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#22C55E]/50 shadow-lg relative z-10 hover:border-[#22C55E]/40"
+                    data-filter="series"
+                >
+                    <i class="fas fa-tv mr-2"></i>Séries
+                </button>
+            </div>
+        </div>
+
+        <!-- Message de chargement -->
+        <div id="loading" class="hidden text-center py-12">
+            <div class="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-purple-500"></div>
+            <p class="mt-4 text-gray-400">Chargement...</p>
+        </div>
+
+        <!-- Message d'erreur avec glassmorphisme -->
+        <div id="errorMessage" class="hidden mb-6 p-4 backdrop-blur-xl bg-red-500/20 border border-red-500/30 rounded-xl text-red-300 shadow-lg" role="alert"></div>
+
+        <!-- Conteneur pour les résultats -->
+        <div id="resultsContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12"></div>
+
+        <!-- Message si aucun résultat -->
+        <div id="noResults" class="hidden text-center py-12">
+            <div class="text-gray-500 text-xl">
+                <i class="fas fa-search text-6xl mb-4 opacity-50"></i>
+                <p>Aucun résultat trouvé. Essayez une autre recherche.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal pour les détails du film -->
+    <div id="filmModal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <!-- Overlay -->
+            <div id="modalOverlay" class="fixed inset-0 bg-black/75 transition-opacity"></div>
+
+            <!-- Modal avec glassmorphisme -->
+            <div class="inline-block align-bottom backdrop-blur-2xl bg-black/40 border border-white/20 rounded-2xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full">
+                <!-- Header -->
+                <div class="backdrop-blur-xl bg-gradient-to-r from-purple-600/30 via-indigo-600/30 to-pink-600/30 border-b border-white/10 px-6 py-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-2xl font-bold text-white drop-shadow-lg" id="filmModalLabel">Détails du film</h3>
+                        <button
+                            id="closeModal"
+                            class="text-gray-300 hover:text-white transition-all transform hover:rotate-90 focus:outline-none backdrop-blur-sm bg-white/10 hover:bg-white/20 rounded-lg p-2"
+                            aria-label="Fermer"
+                        >
+                            <i class="fas fa-times text-2xl"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Body -->
+                <div class="backdrop-blur-sm bg-black/20 px-6 py-6" id="modalBody">
+                    <!-- Le contenu sera injecté dynamiquement -->
+                </div>
+
+                <!-- Footer -->
+                <div class="backdrop-blur-xl bg-black/20 border-t border-white/10 px-6 py-4 flex justify-end">
+                    <button
+                        id="closeModalBtn"
+                        class="px-6 py-2 backdrop-blur-sm bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-xl transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-500/50 shadow-lg"
+                    >
+                        Fermer
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <!-- AOS (Animate On Scroll) -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out-cubic',
+            once: true, // Animation une seule fois
+            offset: 100,
+            delay: 0
+        });
+    </script>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

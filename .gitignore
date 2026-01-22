@@ -1,0 +1,28 @@
+# Clé API (NE JAMAIS COMMITER)
+config.js
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Éditeurs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+
+# Dependencies (si vous utilisez npm plus tard)
+node_modules/
+
+# Environnement
+.env
+.env.local
+
+# Cursor
+.cursor/
+*.cursorrules.local

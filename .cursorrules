@@ -1,0 +1,75 @@
+# Project: FilmFinder - Application de Recherche de Films
+
+## Code Style
+- Language: JavaScript (ES6+)
+- No frameworks: Vanilla JavaScript only
+- Styling: Tailwind CSS (via CDN)
+- Icons: Font Awesome (via CDN)
+
+## Naming Conventions
+- Functions: camelCase (fetchMovies, handleSearch)
+- Variables: camelCase (currentPage, isLoading)
+- Constants: UPPER_SNAKE_CASE (API_KEY, API_URL)
+- DOM Elements: camelCase or kebab-case (searchInput, filmModal)
+- CSS Classes: Tailwind utility classes, kebab-case for custom classes (film-card, animated-orb)
+
+## Patterns to Use
+✅ ES6+ features (const/let, arrow functions, async/await)
+✅ Fetch API for HTTP requests
+✅ Intersection Observer for scroll animations
+✅ Event delegation when appropriate
+✅ Error handling with try/catch
+✅ Modular functions (single responsibility)
+✅ Comments in French for documentation
+
+## Anti-Patterns to Avoid
+❌ Don't use `var` (use `const` or `let`)
+❌ Don't use `==` (use `===`)
+❌ Don't mutate DOM directly multiple times (batch updates)
+❌ Don't use `console.log` in production code (use only for debugging)
+❌ Don't create global variables (use modules or closures)
+❌ Don't ignore errors (always handle them)
+
+## File Structure
+- HTML: `index.html` (single page application)
+- JavaScript: `script.js` (all logic in one file for simplicity)
+- CSS: `styles.css` (custom styles + animations)
+- Config: `config.js` (API configuration - not committed)
+
+## API Integration
+- Always check API response status
+- Handle errors gracefully with user-friendly messages
+- Validate input before API calls
+- Use environment/config for API keys (never hardcode)
+
+## UI/UX Patterns
+- Show loading states during API calls
+- Display error messages clearly
+- Provide feedback for user actions
+- Use Intersection Observer for progressive loading
+- Implement infinite scroll for pagination
+- Glassmorphism design with modern color palette (2025-2026)
+
+## Animation Guidelines
+- Use CSS transitions for smooth animations
+- Intersection Observer for scroll-triggered animations
+- Keep animations subtle (opacity, transform, blur)
+- Respect prefers-reduced-motion if implemented
+
+## Accessibility
+- Use semantic HTML elements
+- Provide alt text for images
+- Ensure keyboard navigation works
+- Maintain good color contrast ratios (WCAG AA minimum)
+
+## Documentation
+- Add JSDoc comments for complex functions
+- Document API endpoints and responses
+- Keep README.md updated with changes
+- Comment complex logic in French
+
+## Security
+- Never commit API keys (use config.js)
+- Validate all user input
+- Sanitize data from API responses
+- Use HTTPS for API calls
