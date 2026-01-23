@@ -1,176 +1,310 @@
-# FilmFinder - Application de Recherche de Films
+# FilmFinder
 
-Une application web moderne pour rechercher et découvrir des films et séries en utilisant l'API OMDb (The Open Movie Database).
+A modern, responsive web application for searching and discovering movies and TV series using the OMDb (Open Movie Database) API. Built with vanilla JavaScript, featuring a stunning glassmorphism design with smooth AOS (Animate On Scroll) animations.
 
-## 🎬 Fonctionnalités
+## ✨ Features
 
-- **Recherche de films et séries** : Recherchez vos contenus préférés par mots-clés
-- **Affichage progressif** : Les résultats apparaissent progressivement lors du scroll grâce à l'Intersection Observer
-- **Détails complets** : Cliquez sur "Read More" pour voir toutes les informations d'un film dans une modal
-- **Infinite Scroll** : Chargement automatique de plus de résultats lors du scroll
-- **Design responsive** : Interface adaptée à tous les écrans avec Bootstrap 5
-- **Lazy Loading** : Chargement optimisé des images
+- **Movie & Series Search**: Search for your favorite content using keywords
+- **Progressive Display**: Results appear progressively on scroll with AOS flip-down animations
+- **Detailed Information**: Click "En savoir plus" (Read More) to view complete film details in a modal
+- **Infinite Scroll**: Automatically loads more results as you scroll
+- **Advanced Filtering**: Filter results by type (All, Movies, Series)
+- **Responsive Design**: Fully responsive interface optimized for mobile, tablet, and desktop
+- **Lazy Loading**: Optimized image loading for better performance
+- **Modern UI**: Glassmorphism design with 2025-2026 color palette
 
-## 🚀 Installation
+## 🚀 Quick Start
 
-1. **Cloner ou télécharger le projet**
+### Prerequisites
 
-2. **Obtenir une clé API OMDb**
-   - Rendez-vous sur [http://www.omdbapi.com/apikey.aspx](http://www.omdbapi.com/apikey.aspx)
-   - Choisissez "FREE" pour une clé gratuite
-   - Confirmez votre email et récupérez votre clé
+- A modern web browser (Chrome, Firefox, Safari, Edge)
+- An OMDb API key (free tier available)
 
-3. **Configurer la clé API**
-   - Ouvrez le fichier `config.js`
-   - Remplacez `'VOTRE_CLE_API'` par votre clé API obtenue
+### Installation
+
+1. **Clone or download the project**
+
+2. **Get an OMDb API key**
+   - Visit [http://www.omdbapi.com/apikey.aspx](http://www.omdbapi.com/apikey.aspx)
+   - Choose "FREE" for a free API key
+   - Confirm your email and retrieve your key
+
+3. **Configure the API key**
+   - Copy `config.js.example` to `config.js`
+   - Replace `'YOUR_API_KEY'` with your obtained API key
    ```javascript
-   const API_KEY = 'votre-cle-api-ici';
+   const API_KEY = 'your-api-key-here';
    ```
 
-4. **Ouvrir l'application**
-   - Ouvrez simplement `index.html` dans votre navigateur
-   - Ou servez les fichiers via un serveur local (recommandé)
+4. **Run the application**
+   - Simply open `index.html` in your web browser
+   - Or serve the files via a local server (recommended)
+     ```bash
+     # Using Python
+     python -m http.server 8000
 
-## 📁 Structure du projet
+     # Using Node.js (http-server)
+     npx http-server
+     ```
+
+## 📁 Project Structure
 
 ```
 FilmFinder-JS-API/
-├── index.html          # Page principale HTML
-├── script.js           # Logique JavaScript principale
-├── styles.css          # Styles CSS personnalisés
-├── config.js           # Configuration de l'API (à ne pas commiter)
-├── .gitignore          # Fichiers à ignorer par Git
-└── README.md           # Documentation du projet
+├── index.html              # Main HTML entry point
+├── script.js               # Core JavaScript logic
+├── styles.css              # Custom CSS styles and animations
+├── config.js               # API configuration (not versioned)
+├── config.js.example       # Example configuration file
+├── .gitignore              # Git ignore rules
+├── .cursorrules            # Cursor AI rules
+├── .cursorignore           # Cursor ignore patterns
+├── .vscode/                # VS Code/Cursor settings
+│   ├── settings.json       # Editor settings
+│   └── extensions.json     # Recommended extensions
+├── ARCHITECTURE.md         # Architecture documentation
+└── README.md               # This file
 ```
 
-## 🛠️ Technologies utilisées
+## 🛠️ Technologies
 
-- **HTML5** : Structure de la page
-- **CSS3** : Styles et animations personnalisées
-- **JavaScript (ES6+)** : Logique de l'application
-  - Fetch API pour les requêtes asynchrones
-  - Intersection Observer API pour les animations au scroll
-  - Async/Await pour la gestion asynchrone
-  - ES6 Modules et closures
-- **Tailwind CSS** : Framework CSS moderne (via CDN)
-  - Glassmorphisme avec backdrop-blur
-  - Palette de couleurs 2025-2026 (Electric Cyan, Plum, Emerald)
-- **Font Awesome** : Icônes (via CDN)
-- **OMDb API** : API pour les données de films
+### Core Technologies
+- **HTML5**: Semantic markup
+- **CSS3**: Custom styles and animations
+- **JavaScript (ES6+)**: Vanilla JavaScript with modern features
+  - Fetch API for asynchronous requests
+  - Async/Await for promise handling
+  - ES6 Modules and closures
+  - Event delegation
+
+### External Libraries (CDN)
+- **Tailwind CSS**: Modern utility-first CSS framework
+  - Glassmorphism effects with backdrop-blur
+  - 2025-2026 color palette (Electric Cyan, Plum, Emerald)
+- **AOS (Animate On Scroll)**: Scroll animation library
+  - Flip-down effect for movie cards
+  - Progressive delay animations (staggered by row)
+- **Font Awesome**: Icon library
+- **OMDb API**: Movie and series data provider
+
+## 🎨 Design Features
+
+### Glassmorphism
+- Translucent backgrounds with backdrop blur (16px-24px)
+- Subtle borders and shadows with color glows
+- Layered depth effects
+- Modern 2025-2026 design trends
+
+### Color Palette
+- **Primary Background**: `#0C1120` (Navy/Charcoal)
+- **Surface Colors**: `#151A21` (Dark Gray)
+- **Text Primary**: `#E9EEF5` (Off-white)
+- **Text Secondary**: `#B0B0B0` (Medium Gray)
+- **Accent Colors**:
+  - Electric Cyan: `#40E0FF`
+  - Plum/Violet: `#845EC2`
+  - Emerald Green: `#22C55E`
+  - Bright Pink: `#D65DB1`
+
+### Animations
+- **AOS Flip-Down**: Cards flip down on scroll with 800ms duration
+- **Progressive Delays**: Staggered animations per row (0ms, 100ms, 200ms)
+- **Hover Effects**: Smooth scale (105%) and glow transitions
+- **Background Elements**: Animated orbs, particles, and geometric shapes
 
 ## 🏗️ Architecture
 
-### Structure des fichiers
+### Data Flow
+
 ```
-FilmFinder-JS-API/
-├── index.html          # Point d'entrée - Structure HTML
-├── script.js           # Logique JavaScript principale
-│   ├── Gestion API (fetchMovies, fetchMovieDetails)
-│   ├── UI (createFilmCard, handleSearch)
-│   ├── Animations (Intersection Observer)
-│   └── Utilitaires (showError, showLoading)
-├── styles.css          # Styles CSS personnalisés
-│   ├── Animations (fadeInUp, float, geometric-rotate)
-│   ├── Glassmorphisme (backdrop-blur)
-│   └── Éléments animés (orbes, particules, grille)
-├── config.js           # Configuration API (non versionné)
-└── .cursorrules        # Règles pour Cursor IA
+User Input → handleSearch()
+    ↓
+Validation
+    ↓
+fetchMovies(query, page)
+    ↓
+OMDb API Request
+    ↓
+Response Processing
+    ↓
+Duplicate Filtering (Set)
+    ↓
+createFilmCard() for each film
+    ↓
+DOM Insertion + AOS Animation
+    ↓
+Display with Progressive Animations
 ```
 
-### Flux de données
-1. **Recherche utilisateur** → Formulaire (`handleSearch`)
-2. **Appel API** → `fetchMovies(query, page)`
-3. **Traitement réponse** → Filtrage doublons, création cartes
-4. **Affichage** → Insertion DOM avec animations progressives
-5. **Détails film** → `fetchMovieDetails(imdbID)` → Modal
+### Key Functions
 
-### Patterns utilisés
-- **Singleton Pattern** : Variables globales pour état application
-- **Observer Pattern** : Intersection Observer pour animations scroll
-- **Event Delegation** : Gestionnaires d'événements centralisés
-- **Async/Await** : Gestion asynchrone des requêtes API
-- **Error Handling** : Try/catch avec messages utilisateur
+- **API Management**: `fetchMovies()`, `fetchMovieDetails()`
+- **UI Components**: `createFilmCard()`, `handleSearch()`, `applyFilter()`
+- **Animations**: AOS integration with flip-down effect
+- **Utilities**: `showError()`, `showLoading()`, `clearResults()`
 
-## 🎯 Fonctionnalités détaillées
+### Design Patterns
 
-### Recherche
-- Formulaire de recherche avec validation
-- Gestion des erreurs (API non configurée, erreurs réseau, etc.)
-- Affichage d'un indicateur de chargement
+- **Singleton Pattern**: Global state management
+- **Observer Pattern**: AOS for scroll-triggered animations
+- **Event Delegation**: Centralized event handlers
+- **Async/Await**: Asynchronous API request handling
+- **Error Handling**: Comprehensive try/catch with user-friendly messages
 
-### Affichage des résultats
-- Cartes de films avec :
-  - Affiche du film (avec image de remplacement si absente)
-  - Titre du film
-  - Année de sortie
-  - Type (Film ou Série)
-  - Bouton "Read More"
+## 🎯 Features in Detail
 
-### Animation au scroll
-- Les cartes apparaissent progressivement lors du scroll
-- Animation de translation depuis la gauche
-- Opacité qui passe de 0 à 1
+### Search Functionality
+- Real-time search with input validation
+- Error handling for API configuration and network issues
+- Loading indicators during API calls
+- Duplicate prevention using Set data structure
 
-### Modal de détails
-- Affiche toutes les informations du film :
-  - Affiche haute résolution
-  - Titre, année, genre
-  - Réalisateur et acteurs
-  - Durée
-  - Note IMDb avec étoiles
-  - Synopsis complet
+### Results Display
+- **Grid Layout**: Maximum 3 columns
+  - Mobile: 1 column
+  - Tablet (sm): 2 columns
+  - Desktop (md+): 3 columns
+- **Movie Cards** featuring:
+  - Movie poster with `object-contain` (no cropping)
+  - Title with line clamping (2 lines max)
+  - Release year
+  - Type badge (Movie/Series) with translations
+  - "En savoir plus" (Read More) button
+
+### Filtering System
+- **All**: Display all results
+- **Movies**: Filter by movie type
+- **Series**: Filter by series type
+- Real-time filtering without page reload
+- Visual feedback for active filter
+
+### Detail Modal
+- Complete film information:
+  - High-resolution poster
+  - Title, year, genre
+  - Director and cast
+  - Runtime
+  - IMDb rating with star display
+  - Full plot synopsis
+- Glassmorphism design with backdrop blur
 
 ### Infinite Scroll
-- Chargement automatique de la page suivante
-- Se déclenche quand l'utilisateur approche de la fin des résultats
+- Automatic pagination
+- Triggers when user approaches end of results
+- Seamless loading experience
+- Prevents duplicate results
 
-## 📝 Notes importantes
+## 📝 Important Notes
 
-⚠️ **IMPORTANT** : Ne commitez jamais votre clé API sur GitHub !
-- Le fichier `config.js` est déjà dans `.gitignore`
-- Si vous utilisez Git, vérifiez que `config.js` n'est pas suivi
+⚠️ **Security**: Never commit your API key to version control!
+- The `config.js` file is already in `.gitignore`
+- If using Git, verify that `config.js` is not tracked
+- Use `config.js.example` as a template
 
-## 🔧 Personnalisation
+## 🔧 Customization
 
-### Modifier les styles
-Éditez `styles.css` pour personnaliser l'apparence :
-- Couleurs dans les variables CSS
-- Durées d'animation
-- Tailles et espacements
+### Styling
+Edit `styles.css` to customize:
+- Color palette
+- Animation durations
+- Spacing and sizing
+- Background elements (orbs, particles, grid)
 
-### Modifier le comportement
-Éditez `script.js` pour :
-- Changer le nombre de résultats par page
-- Modifier le seuil d'Intersection Observer
-- Ajuster les animations
+### Behavior
+Edit `script.js` to modify:
+- Number of results per page
+- AOS animation settings
+- Filter logic
+- API request parameters
 
-## 📱 Compatibilité
+### AOS Configuration
+Modify AOS settings in `index.html`:
+```javascript
+AOS.init({
+    duration: 800,           // Animation duration (ms)
+    easing: 'ease-out-cubic', // Easing function
+    once: true,              // Animate only once
+    offset: 100              // Trigger offset (px)
+});
+```
 
-- Navigateurs modernes (Chrome, Firefox, Safari, Edge)
-- Responsive design pour mobile, tablette et desktop
-- Fonctionne sans dépendances externes (hormis Bootstrap et Font Awesome via CDN)
+### Grid Layout
+Modify grid columns in `index.html` (line 155):
+```html
+<!-- Current: 1 col mobile, 2 cols tablet, 3 cols desktop -->
+<div id="resultsContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"></div>
+```
 
-## 🐛 Résolution de problèmes
+## 📱 Browser Compatibility
 
-**Erreur "Veuillez configurer votre clé API"**
-- Vérifiez que vous avez bien remplacé `VOTRE_CLE_API` dans `config.js`
+- ✅ Chrome (latest)
+- ✅ Firefox (latest)
+- ✅ Safari (latest)
+- ✅ Edge (latest)
+- ✅ Mobile browsers (iOS Safari, Chrome Mobile)
 
-**Aucun résultat trouvé**
-- Vérifiez votre connexion internet
-- Vérifiez que votre clé API est valide
-- Essayez avec des termes de recherche différents
+## 🐛 Troubleshooting
 
-**Les animations ne fonctionnent pas**
-- Vérifiez que votre navigateur supporte l'Intersection Observer API
-- Ouvrez la console du navigateur pour voir les erreurs éventuelles
+### "Please configure your API key" Error
+- Verify that you've replaced `'YOUR_API_KEY'` in `config.js`
+- Ensure `config.js` is properly loaded (check browser console)
+- Check that `config.js` exists and is not empty
 
-## 📄 Licence
+### No Results Found
+- Check your internet connection
+- Verify your API key is valid and active
+- Try different search terms
+- Check browser console for API errors
 
-Ce projet est un exercice d'apprentissage. L'API OMDb a ses propres conditions d'utilisation.
+### Animations Not Working
+- Ensure AOS library is loaded (check network tab)
+- Verify browser supports modern CSS features
+- Check browser console for JavaScript errors
+- Verify AOS.init() is called after DOM is loaded
 
-## 🙏 Remerciements
+### Images Not Loading
+- Check internet connection
+- Verify API returns valid image URLs
+- Fallback placeholder should appear automatically
+- Check browser console for CORS or loading errors
 
-- [OMDb API](http://www.omdbapi.com/) pour l'accès aux données de films
-- [Bootstrap](https://getbootstrap.com/) pour le framework CSS
-- [Font Awesome](https://fontawesome.com/) pour les icônes
-# FilmFinder-JS
+### Filtering Not Working
+- Verify filter buttons are visible after first search
+- Check browser console for JavaScript errors
+- Ensure film cards have correct `data-film-type` attributes
+
+## 🚀 Performance
+
+### Optimizations
+- **Lazy Loading**: Images load only when visible
+- **Pagination**: Results loaded in batches of 10
+- **AOS**: Efficient scroll-based animations
+- **CSS Animations**: Hardware-accelerated transforms
+- **Duplicate Prevention**: Set-based filtering
+
+### Best Practices
+- Minimal external dependencies (CDN only)
+- Vanilla JavaScript (no build step required)
+- Optimized CSS with Tailwind utilities
+- Efficient DOM manipulation
+
+## 📄 License
+
+This project is a learning exercise. The OMDb API has its own terms of use.
+
+## 🙏 Acknowledgments
+
+- [OMDb API](http://www.omdbapi.com/) for providing movie and series data
+- [Tailwind CSS](https://tailwindcss.com/) for the utility-first CSS framework
+- [AOS](https://michalsnik.github.io/aos/) for scroll animations
+- [Font Awesome](https://fontawesome.com/) for icons
+
+## 📚 Additional Documentation
+
+- See `ARCHITECTURE.md` for detailed architecture documentation
+- See `.cursorrules` for development guidelines
+
+---
+
+**Version**: 1.0.0
+**Last Updated**: 2025-01-21
